@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!--Autor @Nome do Cliente-->
+<head>
+
+
+
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/itensformulario.css" type="text/css">
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="theme-color" content="#ffffff">
+
+<!-- codigo css-->
+    <style>
+
+fieldset
+{
+  width:320px;
+  height:430px;
+  box-shadow: 1px -4px 20px 3px #0b0e0e91;
+  background-color:#ffffff;
+  border-radius: 25px;
+  margin: 20px;
+  border-color:#2fa86500 ;
+
+  
+  /*1px -4px 20px 3px #0b0e0e91*/
+
+}
+
+
+/* botao de enviar formulario       */
+button{
+    
+    background-color:#348EEE ;
+    height:42px;
+    width: 290px;
+    border-radius: 10px;
+    border: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+
+
+
+}
+
+/*   botoes nome, email, telefone    */
+input{
+    background-color: rgba(223, 217, 217, 0.751);
+    border-radius: 10px;
+    border: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+
+
+
+
+
+}
+
+/* assunto      */
+select{
+
+width:290px; 
+height: 38px;
+background-color: rgba(223, 217, 217, 0.751);
+border-radius: 10px;
+border: 0px;
+font-family:Arial, Helvetica, sans-serif;
+
+
+}
+
+
+textarea{
+
+background-color: rgba(223, 217, 217, 0.751);
+border-radius: 10px;
+border: 0px;
+resize: none; /*  retira opçao do usuario aumenta textarea   */
+
+
+
+
+
+}
+
+
+
+    </style>
+
+
+<!--  fim codigo css-->
+
+
+
+
+    <title>Contato Whatsapp</title>
+
+
+
+    
+</head>
+<body>
+    <header>
+         
+    </header>
+    <nav>
+        <ul>
+           <!--  <li><a href="index.html">Home</a></li>-->
+           <!--  <li><a href="sobre.html">Sobre</a></li> Este é um comentário HTML -->
+           <!--  <li><a href="#">Contato</a></li> <li><a href="sobre.html">Sobre</a></li> Este é um comentário HTML -->
+            
+        </ul>
+    </nav>
+    <div class="row" id="area"></div>
+
+
+    <center>
+        <form>
+    <fieldset>
+        <br>
+        <div class="box">
+            <input type="text" name="" id="nome"   required maxlength="35" minlength="2"   placeholder="*Seu nome"
+            autocomplete="off" size="38"
+            style="height: 36px" >
+
+        </div>
+
+
+
+        <div class="box">
+            <p><input type="text" name="" id="email" required placeholder="*Seu e-mail"
+            autocomplete="off"  size="38"
+            style="height: 36px" ></p>
+
+            <span></span>
+
+        </div>
+
+        <div class="box">
+  <p>  <input type="text" name="" id="telefone" required placeholder="*Telefone / WhatsApp" size="38" style="height: 36px"         ></p>
+        </div>
+
+
+        <div class="box">
+            
+            <select name="assunto" id="assunto"
+            >>       <option value="" selected="selected" >*Escolha o assunto </option>
+            <option>*Receber contato sobre Seguro de Vida </option>
+            <option>*Saber mais sobre o Seguro de Vida </option>
+            <option>*Cotação de Seguro de Vida </option>                </select>
+            
+        </div>
+
+
+
+
+
+        <div class="box">
+            <br>
+            <textarea name="" id="mensagem" rows="8" cols="36px" required
+             placeholder="Escreva aqui sua mensagem"></textarea>
+             <span></span>
+
+        </div>
+
+
+        <div class="box">
+            <p><button id="send"   class="botaoenviar" ><b>ENVIAR<b></button></p>
+        </div>
+    </fieldset>
+</form>
+    </center>
+    <footer>
+        <dl>
+    </footer>
+<script>const evento = document.getElementById('send')
+const enviarFormulario =() => {
+        let nome = document.getElementById('nome').value;
+        let email = document.getElementById('email').value;
+        let telefone = document.getElementById('telefone').value;
+        let assunto = document.getElementById('assunto').value;
+        let mensagem = document.getElementById('mensagem').value;
+        let numero= 5562985537358;
+var win= window.open(`https://wa.me/${numero}?text=Ola%20, Segue dados:  %20Nome%20 : %20${nome}
+%20 E-mail: ${email}, Telefone:%20${telefone}, Assunto:%20${assunto}, Mensagem: %20${mensagem}`,'_blank');       
+}
+evento.addEventListener('click', enviarFormulario)</script>
+
+
+
+</body>
+
+<script >function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+	return document.getElementById( el );
+}
+window.onload = function(){
+	id('telefone').onkeyup = function(){
+		mascara( this, mtel );
+	}
+}
+</script>
+
+</html>
